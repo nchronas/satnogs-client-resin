@@ -6,6 +6,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-python
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
     supervisor && \
+    dropbear && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set our working directory
@@ -29,4 +30,4 @@ COPY . ./
 ENV INITSYSTEM on
 
 # main.py will run when container starts up on the device
-CMD ["python","src/main.py"]
+CMD ["bash", "start.sh"]

@@ -23,13 +23,14 @@ COPY ./requirements.txt /requirements.txt
 #RUN pip install -r /requirements.txt
 
 RUN git clone https://github.com/satnogs/satnogs-client.git
-COPY ./settings.py /satnogs-client/satnogsclient/settings.py
 RUN cd satnogs-client && \
  python setup.py build && \
  python setup.py install
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
+
+COPY ./settings.py /usr/src/app/satnogs-client/satnogsclient/settings.py
 
 # switch on systemd init system in container
 ENV INITSYSTEM on

@@ -1,10 +1,5 @@
 #!/bin/bash
-
-# Make sudo actually work
-HOSTNAME=$(cat /etc/hostname)
-echo "127.0.1.1 $HOSTNAME" >> /etc/hosts
-hostname $HOSTNAME
-
-if [ "$INITSYSTEM" != "on" ]; then
-  /usr/sbin/sshd -p 80 &
-fi
+#Set the root password as root if not set as an ENV variable
+export PASSWD=${PASSWD:=root}
+#Set the root password
+echo "root:$PASSWD" | chpasswd

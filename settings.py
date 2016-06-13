@@ -11,7 +11,7 @@ def _cast_or_none(func, value):
         return None
 
 # Ground station information
-API_TOKEN = environ.get('SATNOGS_API_TOKEN', None)
+API_TOKEN = '0' #environ.get('SATNOGS_API_TOKEN', None)
 GROUND_STATION_ID = '0' #_cast_or_none(int, environ.get('SATNOGS_STATION_ID', None))
 GROUND_STATION_LAT = '0' #_cast_or_none(float, environ.get('SATNOGS_STATION_LAT', None))
 GROUND_STATION_LON = '0' #_cast_or_none(float, environ.get('SATNOGS_STATION_LON', None))

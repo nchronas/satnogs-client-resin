@@ -38,8 +38,8 @@ WORKDIR /usr/src/app
 # pip install python deps from requirements.txt on the resin.io build server
 #RUN pip install -r /requirements.txt
 
-git clone https://github.com/satnogs/satnogs-client.git
-git clone https://github.com/satnogs/gr-satnogs.git
+RUN git clone https://github.com/satnogs/satnogs-client.git
+RUN git clone https://github.com/satnogs/gr-satnogs.git
 
 #RUN git clone https://github.com/nchronas/satnogs-client.git
 #RUN cd satnogs-client && \

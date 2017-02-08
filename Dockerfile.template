@@ -5,7 +5,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-fedora
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN dnf install -y \
-	util-linux-use \
+	util-linux-user \
 	git \
 	gcc \
 	redhat-rpm-config \
@@ -25,8 +25,9 @@ RUN dnf install -y \
 	gr-osmosdr \
 	libnova \
 	libnova-devel \
-	gnuplot \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+	gnuplot 
+	#\
+   # && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set our working directory
 WORKDIR /usr/src/app

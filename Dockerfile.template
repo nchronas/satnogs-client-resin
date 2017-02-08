@@ -7,26 +7,46 @@ FROM resin/%%RESIN_MACHINE_NAME%%-python
 RUN apt-get update && apt-get install -yq \
     supervisor \
     dropbear \
-    cmake \
     libusb-1.0-0-dev \
     libhamlib-utils \
-    vorbis-tools \
+	git \
+	gcc \
+	python-devel \
+	redis \
+	vorbis-tools \
+	hamlib \
+	gnuradio \
+	gnuradio-devel \
+	cmake \
+	swig \
+	fftw3-devel \
+	gcc-c++ \
+	cppunit \
+	cppunit-devel \
+	doxygen \
+	gr-osmosdr \
+	libnova \
+	libnova-devel \
+	gnuplot \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set our working directory
 WORKDIR /usr/src/app
 
 # Copy requirements.txt first for better cache on later pushes
-COPY ./requirements.txt /requirements.txt
+#COPY ./requirements.txt /requirements.txt
 
 # pip install python deps from requirements.txt on the resin.io build server
 #RUN pip install -r /requirements.txt
 
-RUN git clone https://github.com/nchronas/satnogs-client.git
-RUN cd satnogs-client && \
- git checkout ecss && \
- python setup.py build && \
- python setup.py install
+git clone https://github.com/satnogs/satnogs-client.git
+git clone https://github.com/satnogs/gr-satnogs.git
+
+#RUN git clone https://github.com/nchronas/satnogs-client.git
+#RUN cd satnogs-client && \
+# git checkout ecss && \
+# python setup.py build && \
+# python setup.py install
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./

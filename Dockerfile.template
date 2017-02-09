@@ -51,11 +51,10 @@ RUN cd gr-satnogs && \
 	make -j4  && \
 	make install
 
-RUN ls && \
-	echo L1 && \ 
-	ls .. && \
-	echo L2 && \
-    cd satnogs-client && \
+RUN dnf install -y \ 
+	python-cffi
+
+RUN cd satnogs-client && \
 	pip install .  && \
 	python setup.py build && \
 	python setup.py install

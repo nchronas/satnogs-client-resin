@@ -17,6 +17,7 @@ RUN dnf install -y \
 	gnuradio \
 	gnuradio-devel \
 	cmake \
+	make \
 	swig \
 	fftw3-devel \
 	gcc-c++ \

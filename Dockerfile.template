@@ -46,7 +46,7 @@ RUN cd gr-satnogs && \
     git checkout dev && \
     mkdir build && \
 	cd build && \
-	cmake -DLIB_SUFFIX=64 -DCMAKE_INSTALL_PREFIX=/usr ..  && \
+	#cmake -DLIB_SUFFIX=64 -DCMAKE_INSTALL_PREFIX=/usr ..  && \
 	make -j4  && \
 	make install
 

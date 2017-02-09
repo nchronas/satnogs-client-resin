@@ -52,10 +52,10 @@ RUN cd gr-satnogs && \
 	make install
 
 RUN ls && \
-	echo L1
+	echo L1 && \ 
 	ls .. && \
 	echo L2 && \
-    cd ../satnogs-client && \
+    cd satnogs-client && \
 	pip install .  && \
 	python setup.py build && \
 	python setup.py install

@@ -51,7 +51,9 @@ RUN cd gr-satnogs && \
 	make -j4  && \
 	make install
 
-RUN cd ../satnogs-client && \
+RUN ls && \
+	ls .. && \
+    cd ../satnogs-client && \
 	pip install .  && \
 	python setup.py build && \
 	python setup.py install

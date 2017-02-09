@@ -43,13 +43,13 @@ WORKDIR /usr/src/app
 RUN git clone https://github.com/satnogs/satnogs-client.git
 RUN git clone https://github.com/satnogs/gr-satnogs.git
 
-RUN cd gr-satnogs && \
-    git checkout dev && \
-    mkdir build && \
-	cd build && \
-	#cmake -DLIB_SUFFIX=64 -DCMAKE_INSTALL_PREFIX=/usr ..  && \
-	make -j4  && \
-	make install
+#RUN cd gr-satnogs && \
+#    git checkout dev && \
+#    mkdir build && \
+#	cd build && \
+#	#cmake -DLIB_SUFFIX=64 -DCMAKE_INSTALL_PREFIX=/usr ..  && \
+#	make -j4  && \
+#	make install
 
 #RUN git clone https://github.com/nchronas/satnogs-client.git
 #RUN cd satnogs-client && \
@@ -64,4 +64,4 @@ COPY . ./
 ENV INITSYSTEM on
 
 # main.py will run when container starts up on the device
-CMD ["bash", "start.sh"]
+#CMD ["bash", "start.sh"]

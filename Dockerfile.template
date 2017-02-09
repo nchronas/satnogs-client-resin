@@ -11,6 +11,7 @@ RUN dnf install -y \
 	redhat-rpm-config \
 	python-devel \
 	redis \
+	libvorbis-devel \
 	vorbis-tools \
 	hamlib \
 	gnuradio \

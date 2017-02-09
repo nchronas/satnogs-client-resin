@@ -52,7 +52,7 @@ RUN cd gr-satnogs && \
 	make install
 
 RUN dnf install -y \ 
-	python-cffi && \
+	python-cffi \
 	openssl
 
 RUN cd satnogs-client && \

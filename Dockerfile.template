@@ -53,7 +53,8 @@ RUN cd gr-satnogs && \
 
 RUN dnf install -y \ 
 	python-cffi \
-	openssl
+	libffi-dev \
+	libssl-dev
 
 RUN cd satnogs-client && \
 	pip install .  && \

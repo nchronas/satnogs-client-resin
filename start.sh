@@ -3,3 +3,5 @@
 export PASSWD=${PASSWD:=root}
 #Set the root password
 echo "root:$PASSWD" | chpasswd
+
+satnogs-poller &

@@ -4,6 +4,9 @@ export PASSWD=${PASSWD:=root}
 #Set the root password
 echo "root:$PASSWD" | chpasswd
 
+echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf
+ldconfig
+
 echo "Starting client"
 
 redis-server &

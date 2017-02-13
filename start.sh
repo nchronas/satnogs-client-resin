@@ -4,4 +4,8 @@ export PASSWD=${PASSWD:=root}
 #Set the root password
 echo "root:$PASSWD" | chpasswd
 
+redis-server &
+
+rotctld &
+
 satnogs-poller &

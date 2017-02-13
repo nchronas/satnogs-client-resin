@@ -4,8 +4,14 @@ export PASSWD=${PASSWD:=root}
 #Set the root password
 echo "root:$PASSWD" | chpasswd
 
+echo "Starting client"
+
 redis-server &
+echo "Redis is ok"
 
 rotctld &
+echo "rotctld is ok"
 
-satnogs-poller &
+echo "Starting poller"
+satnogs-poller
+echo "poller failed"

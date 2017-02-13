@@ -5,6 +5,9 @@ FROM resin/%%RESIN_MACHINE_NAME%%-fedora
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN dnf install -y \
+	htop \
+	grep \
+	procps-ng \
 	util-linux-user \
 	git \
 	gcc \
@@ -53,8 +56,6 @@ RUN cd gr-satnogs && \
 	cmake -DLIB_SUFFIX=64 -DCMAKE_INSTALL_PREFIX=/usr ..  && \
 	make -j4  && \
 	make install
-
-	#python-cffi \
 
 RUN cd satnogs-client && \
 	pip install .  && \

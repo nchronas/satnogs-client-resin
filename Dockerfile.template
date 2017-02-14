@@ -49,8 +49,8 @@ RUN cd gr-satnogs && \
 	make -j4  && \
 	make install
 
-RUN echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
-	ldconfig
+#RUN echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
+#	ldconfig
 
 RUN cd satnogs-client && \
 	pip install .  && \

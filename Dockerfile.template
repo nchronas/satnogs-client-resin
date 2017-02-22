@@ -66,7 +66,10 @@ COPY . ./
 ENV INITSYSTEM on
 
 RUN dnf install -y \
-	gr-uhd \
+	uhd \
+	uhd-devel \
+
+RUN python /usr/libexec/uhd/uhd_images_downloader.py
 
 # main.py will run when container starts up on the device
 CMD ["bash", "/usr/src/app/start.sh"]

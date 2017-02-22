@@ -65,5 +65,8 @@ COPY . ./
 # switch on systemd init system in container
 ENV INITSYSTEM on
 
+RUN dnf install -y \
+	gr-uhd \
+
 # main.py will run when container starts up on the device
 CMD ["bash", "/usr/src/app/start.sh"]

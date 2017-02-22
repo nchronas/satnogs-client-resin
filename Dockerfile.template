@@ -36,7 +36,7 @@ RUN dnf install -y \
 	openssh-server
 
 # Set our working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 RUN git clone https://github.com/satnogs/gr-satnogs.git
 

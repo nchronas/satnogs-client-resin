@@ -52,10 +52,10 @@ RUN echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
 	ldconfig
 
 #RUN git clone https://github.com/satnogs/satnogs-client.git
-RUN git clone https://github.com/adamkalis/satnogs-client.git
+RUN git clone https://github.com/nchronas/satnogs-client.git
 
 RUN cd satnogs-client && \
-	git checkout change-webserver-host && \
+	git checkout web_server_fix && \
 	pip install .  && \
 	python setup.py build && \
 	python setup.py install

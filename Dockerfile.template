@@ -68,6 +68,7 @@ COPY . ./
 # switch on systemd init system in container
 ENV INITSYSTEM on
 
+
 RUN python /usr/libexec/uhd/uhd_images_downloader.py
 
 # main.py will run when container starts up on the device

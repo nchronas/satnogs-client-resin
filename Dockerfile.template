@@ -38,7 +38,6 @@ RUN dnf install -y \
 # Set our working directory
 WORKDIR /usr/src/app
 
-RUN git clone https://github.com/satnogs/satnogs-client.git
 RUN git clone https://github.com/satnogs/gr-satnogs.git
 
 RUN cd gr-satnogs && \
@@ -52,7 +51,11 @@ RUN cd gr-satnogs && \
 RUN echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
 	ldconfig
 
+#RUN git clone https://github.com/satnogs/satnogs-client.git
+RUN git clone https://github.com/adamkalis/satnogs-client.git
+
 RUN cd satnogs-client && \
+	git checkout change-webserver-host && \
 	pip install .  && \
 	python setup.py build && \
 	python setup.py install
@@ -65,11 +68,7 @@ COPY . ./
 # switch on systemd init system in container
 ENV INITSYSTEM on
 
-#RUN dnf install -y \
-#	uhd \
-#	uhd-devel \
-
 RUN python /usr/libexec/uhd/uhd_images_downloader.py
 
 # main.py will run when container starts up on the device
-CMD ["bash", "/usr/src/app/start.sh"]
+CMD ["bash", "/app/start.sh"]

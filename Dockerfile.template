@@ -65,11 +65,11 @@ COPY . ./
 # switch on systemd init system in container
 ENV INITSYSTEM on
 
-RUN dnf install -y \
-	uhd \
-	uhd-devel \
+#RUN dnf install -y \
+#	uhd \
+#	uhd-devel \
 
-RUN python /usr/libexec/uhd/uhd_images_downloader.py
+#RUN python /usr/libexec/uhd/uhd_images_downloader.py
 
 # main.py will run when container starts up on the device
 CMD ["bash", "/usr/src/app/start.sh"]

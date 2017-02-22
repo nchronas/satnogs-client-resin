@@ -54,7 +54,7 @@ RUN echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
 #RUN git clone https://github.com/satnogs/satnogs-client.git
 RUN git clone https://github.com/nchronas/satnogs-client.git
 
-RUN cd satnogs-client && \
+RUN cd satnogs-client &&  \
 	git checkout web_server_fix && \
 	pip install .  && \
 	python setup.py build && \
@@ -67,7 +67,6 @@ COPY . ./
 
 # switch on systemd init system in container
 ENV INITSYSTEM on
-
 
 RUN python /usr/libexec/uhd/uhd_images_downloader.py
 

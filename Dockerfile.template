@@ -2,8 +2,7 @@
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/%%RESIN_MACHINE_NAME%%-fedora
 
-# use apt-get if you need to install dependencies,
-# for instance if you need ALSA sound utils, just uncomment the lines below.
+# client dependencies
 RUN dnf install -y \
 	htop \
 	grep \
@@ -38,21 +37,20 @@ RUN dnf install -y \
 # Set our working directory
 WORKDIR /app
 
-RUN git clone https://github.com/satnogs/gr-satnogs.git
-
-RUN cd gr-satnogs && \
+#building gnu radio
+RUN git clone https://github.com/satnogs/gr-satnogs.git && \
+    cd gr-satnogs && \
     git checkout dev && \
     mkdir build && \
 	cd build && \
 	cmake -DLIB_SUFFIX=64 -DCMAKE_INSTALL_PREFIX=/usr ..  && \
 	make -j4  && \
-	make install
-
-RUN echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
+	make install && \
+    echo /usr/lib64 > /etc/ld.so.conf.d/lib64.conf && \
 	ldconfig
 
-#RUN git clone https://github.com/satnogs/satnogs-client.git
-
+#building the client
+#git clone https://github.com/satnogs/satnogs-client.git
 RUN git clone https://github.com/nchronas/satnogs-client.git && \
     cd satnogs-client &&  \
 	git checkout web_server_fix && \
@@ -69,6 +67,7 @@ COPY . ./
 # switch on systemd init system in container
 ENV INITSYSTEM on
 
+#downloading the images needed from the USRP
 RUN python /usr/libexec/uhd/uhd_images_downloader.py
 
 # main.py will run when container starts up on the device
